@@ -50,6 +50,7 @@ fun NoteListScreen(navController: NavController, viewModel: NoteViewModel){
 
     Column(modifier= Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(text = "Size of list: ${viewModel.notes.size}", modifier = Modifier.fillMaxWidth())
         Button(onClick = {
             navController.navigate("newnotescreen")
 
@@ -80,6 +81,10 @@ fun NoteListScreen(navController: NavController, viewModel: NoteViewModel){
 
                         Column(modifier = Modifier.padding(12.dp)) {
                             Text(
+                                text = note.id.toString(),
+                                fontSize = 18.sp
+                            )
+                            Text(
                                 text = note.title,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 24.sp
@@ -98,6 +103,8 @@ fun NoteListScreen(navController: NavController, viewModel: NoteViewModel){
             }
 
         }
+
+
 
     }
 

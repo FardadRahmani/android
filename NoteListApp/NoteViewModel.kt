@@ -14,6 +14,7 @@ class NoteViewModel : ViewModel() {
         _notes.add(newNote)
     }
 
+
     fun updateNote(noteId: Int, updatedTitle: String, updatedContent: String) {
         val noteIndex = _notes.indexOfFirst { it.id == noteId }
         if (noteIndex != -1) {
@@ -23,4 +24,18 @@ class NoteViewModel : ViewModel() {
             )
         }
     }
+
+
+    fun deleteNote(noteId: Int) {
+        val noteIndex = _notes.indexOfFirst { it.id == noteId }
+        if (noteIndex != -1) {
+            _notes.removeAt(noteIndex)
+            // Update the ids of the remaining notes
+            for (i in noteIndex until _notes.size) {
+                _notes[i] = _notes[i].copy(id = i + 1)
+            }
+        }
+    }
+
+
 }
